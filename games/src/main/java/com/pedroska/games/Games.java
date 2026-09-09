@@ -1,6 +1,8 @@
 package com.pedroska.games;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.util.UUID;
@@ -18,6 +20,9 @@ public class Games {
     @Column(name= "category", nullable = false)
         private String category;
 
+    public Games(@NotNull @NotEmpty String name, @NotNull @NotEmpty String category) {
+    }
+
     public UUID getId() {
         return id;
     }
@@ -30,7 +35,7 @@ public class Games {
         return name;
     }
 
-    public static void setName(String name) {
+    public void setName() {
         this.name = name;
     }
 
@@ -40,7 +45,7 @@ public class Games {
 
 
 
-    public static void setCategory(String category) {
+    public void setCategory() {
         this.category = category;
     }
     @Override
